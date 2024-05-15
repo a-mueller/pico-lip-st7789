@@ -89,8 +89,8 @@ void ST7789::cmd(uint8_t cmd, const uint8_t *data, size_t len) {
     gpio_put(gpio_cs, false);
     gpio_put(gpio_dc, false);
 
-    int result = spi_write_blocking(spi, &cmd, 1);
-    printf("Written cmd %d with result %d\n", cmd, result);
+    spi_write_blocking(spi, &cmd, 1);
+    // printf("Written cmd %d with result %d\n", cmd, result);
 
     if (len > 0) {
         gpio_put(gpio_dc, true);
